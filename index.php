@@ -40,8 +40,11 @@ require "./tabla/th.php";
 require "./tabla/thead.php";
 require "./tabla/width.php";
 
-require "./miscelaneous/option.php";
+require "./tags/option.php";
 
-$nuevo = new option();
+
+echo "<===== Creando la clase DIV ======><br>";
+
+echo "<==================================>";
 ?>
 </body></html>

@@ -11,7 +11,7 @@ class placeholder{
 	public function removePlaceholder(){
 		$this->placeholder = false;
 	}
-	public functino getPlaceholder(){
+	public function getPlaceholder(){
 		return $this->placeholder;
 	}
 	public function printer(){

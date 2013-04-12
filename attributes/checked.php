@@ -20,7 +20,7 @@ class checked{
 	}//Fin de la función getChecked
 	
 	public function printer(){
-		echo ($this->checked)?" checked =\"",$this->getChecked()."\" ":"";
+		echo ($this->checked)?" checked =\"".$this->getChecked()."\" ":"";
 	}//Fin de la función printer
 	
 }//Fin de la clase checked

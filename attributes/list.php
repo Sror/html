@@ -1,8 +1,8 @@
 <?php
-class list{
+class listAttribute{
 	private $list = false;
 	
-	public function list($list = false){
+	public function listAttribute($list = false){
 		$this->setList($list);
 	}
 	public function setList($list){

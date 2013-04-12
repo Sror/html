@@ -1,8 +1,8 @@
 <?php
-class for{
+class forAttribute{
 	private $for = false;
 	
-	public function for($for = false){
+	public function forAttribute($for = false){
 		$this->setFor($for);
 	}
 	public function setFor($for){

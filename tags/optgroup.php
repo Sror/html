@@ -2,7 +2,7 @@
 
 class optgroup {
 
-	$optgroup = array(
+	private $optgroup = array(
 		"disabled"=>false,		//Specifies that an option-group should be disabled
 		"label"=>false,			//Specifies a label for an option-group
 	);
@@ -28,7 +28,7 @@ class optgroup {
 					break;
 				}//Fin de switch
 				
-			}//Fin de la función foreach
+			}//Fin de la funciï¿½n foreach
 			
 		}//Fin del if is_array
 	}//Fin de la clase setConfig
@@ -49,7 +49,7 @@ class optgroup {
 		}elseif(is_bool($disabled)=== true){
 			$this->optgroup['disabled'] = "disabled";
 		}	
-	}//Fin de la función setDisabled
+	}//Fin de la funciï¿½n setDisabled
 	
 	public function setLabel($label = false){
 		if(is_string($label))
@@ -58,35 +58,35 @@ class optgroup {
 			if($label!="")
 				$this->optgroup['label'] = $label;
 		}
-	}//Fin de la función setLabel
+	}//Fin de la funciï¿½n setLabel
 	
 	public function removeDisabled(){
 		$this->optgroup['disabled'] = false;
-	}//Fin de la función removeDisabled
+	}//Fin de la funciï¿½n removeDisabled
 	
 	public function removeLabel(){
 		$this->optgroup['label'] = false;
-	}//Fin de la función removeLabel
+	}//Fin de la funciï¿½n removeLabel
 	
 	private function getDisabled(){
 		return $this->optgroup['disabled'];
-	}//Fin de la función getDisabled
+	}//Fin de la funciï¿½n getDisabled
 	
 	private function getLabel(){
 		return $this->optgroup['label'];
-	}//Fin de la función getLabel
+	}//Fin de la funciï¿½n getLabel
 	
 	private function printDisabled(){
 		echo " disabled =\"".$this->getDisabled()."\" ";
-	}//Fin de la función printDisabled
+	}//Fin de la funciï¿½n printDisabled
 	
 	private function printLabel(){
 		echo " disabled =\"".$this->getLabel()."\" ";
-	}//Fin de la función printLabel
+	}//Fin de la funciï¿½n printLabel
 	
 	private function printer(){
 	
-	}//Fin de la función printer
+	}//Fin de la funciï¿½n printer
 }//Fin de la clase optgroup
 
 ?>
