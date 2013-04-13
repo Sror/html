@@ -56,6 +56,47 @@ class stack
 	}//Fin de la función addElement
 	
 	/**
+	 * Inserta un elemento al final del array
+	 * 
+	 * @param	array	$array		Un array en el que se va a introducir el elemento nuevo
+	 * @param	kown	$element	Elemento que se insertará al final del array
+	 * 
+	 * @return	array	$array		El array con el nuevo elemento insertado al final del mismo.
+	 */
+	public function pushElement($array = false, $element = false){
+		array_push($array, $element);
+
+		return $array;
+	}//Fin de la función pushElement
+	
+	/**
+	 * 
+	 * @param unknown_type $array
+	 * @param unknown_type $element
+	 */
+	public function taskElement($array = false, $element){
+		$array = $this->insertElement($array,$element);
+		
+		return $array;
+	}//Fin de la función taskElement
+	
+	public function insertElement($array = false, $element = false, $index = 0){
+		
+		current($array);
+		$i=0;
+		
+		for ($i=0; $i<$index; $i++)
+			$this->auxiliar[$i] = $array[$i];
+		
+		$this->auxiliar[$i] = $array[$i];
+		
+		for ($i;$i<count($array);$i++)
+			$this->auxiliar[$i+1]=$array[$i];
+		
+		return $this->auxiliar;
+		
+	}//Fin de la función insertElement
+	/**
 	* Elimina un elemento de un array
 	*
 	* Elimina un elemento del array que se pasa por parámetro, cuyo literal sea igual al otro parámetro pasado.
@@ -102,6 +143,19 @@ class stack
 		return $stack;
 	}//Fin de la función changeElement
 	
+	/**
+	 * Extrae el último elemento del array
+	 */
+	public function popElement($array = false){
+		return array_pop($array);	
+	}
+	
+	/**
+	 * Extrae el primer elemento del array
+	 */
+	public function pullElement($array = false){
+		return array_slice($array, 0,1);
+	}
 	/**
 	* Pinta los elemento de un array
 	*
