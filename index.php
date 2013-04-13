@@ -27,6 +27,7 @@ require "./basic/formEvents.php";
 require "./basic/mouseEvents.php";
 require "./basic/mediaEvents.php";
 
+
 require "./tabla/align.php";
 require "./tabla/bgcolor.php";
 require "./tabla/tr.php";
@@ -41,10 +42,47 @@ require "./tabla/thead.php";
 require "./tabla/width.php";
 
 require "./tags/option.php";
+require "./tags/div.php";
 
-
+function printer($array){
+	$value = reset($array);
+	while ($value){
+		echo "- $value  ";
+		$value = next($array);
+	}
+	echo "<br>";
+}
+class prueba{
+	public function printer(){
+		echo "Pintada";
+	}
+}
 echo "<===== Creando la clase DIV ======><br>";
+$prueba = new prueba();
 
-echo "<==================================>";
+
+$td1 = new td("2");
+$td2 = new td("4");
+
+$tr = new tr();
+
+$tr->setPush($td1);
+$tr->setPush($td2);
+
+$table = new table($tabla_config);
+
+$tbody = new tbody();
+$tbody->setElement($tr);
+
+$table->setPush($tbody);
+
+$div = new div();
+
+$div->push($table);
+
+$div->printer();
+
+
+echo "<br><==================================><br>";
 ?>
 </body></html>

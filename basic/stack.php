@@ -22,7 +22,27 @@ class stack
 		$this->setElement($element);
 	}//Fin del constructor
 	
-	public function setElement( $element = false)
+	/**
+	 * Devuelve el primer elemento del array
+	 * 
+	 * @param array $array
+	 */
+	protected function firstElement($array = false){
+		return current($array);
+	}//Fin de la función firstElement
+	
+	/**
+	 * Devuelve el ultimo elemento del array
+	 * 
+	 * @param array $array
+	 * 
+	 * @return mixed
+	 */
+	protected function lastElement($array = false){
+		return end($array);
+	}//Fin de la función lastElement
+	
+	protected function setElement( $element = false)
 	{
 		$auxiliar = array();
 		if (is_array($element)){
@@ -47,7 +67,7 @@ class stack
 	* @param	string	$element	elemento que se va a añadir, debe ser un string
 	* @return	array	$stack		array que se va a devolver una vez que se ha añadido el elemento
 	*/
-	public function addElement($stack = false, $element = false)
+	protected function addElement($stack = false, $element = false)
 	{
 		if (is_string($element))
 			$stack[count($stack)] = trim($element);
@@ -63,7 +83,7 @@ class stack
 	 * 
 	 * @return	array	$array		El array con el nuevo elemento insertado al final del mismo.
 	 */
-	public function pushElement($array = false, $element = false){
+	protected function pushElement($array = false, $element = false){
 		array_push($array, $element);
 
 		return $array;
@@ -74,26 +94,41 @@ class stack
 	 * @param unknown_type $array
 	 * @param unknown_type $element
 	 */
-	public function taskElement($array = false, $element){
+	protected function taskElement($array = false, $element){
 		$array = $this->insertElement($array,$element);
 		
 		return $array;
 	}//Fin de la función taskElement
 	
-	public function insertElement($array = false, $element = false, $index = 0){
+	/**
+	 * Inserta un elemento en un array en una posición dada.
+	 * 
+	 * Debemos tener en cuenta que el array comienza en la posción 0.
+	 * 
+	 * @param array $array		array donde se van a introducir el elemento
+	 * @param known $element	elemento que se quiere introducir
+	 * @param int	$index		Lugar en el array donde se quiere cololcar el elemento, teniendo en cuenta que la primera posición es 0
+	 */
+	protected function insertElement($array = false, $element = false, $index = 0){
 		
 		current($array);
 		$i=0;
 		
-		for ($i=0; $i<$index; $i++)
+		for ($i=0; $i<$index; $i++){
 			$this->auxiliar[$i] = $array[$i];
+		}
 		
-		$this->auxiliar[$i] = $array[$i];
+		$this->auxiliar[$i] = $element;
+
 		
-		for ($i;$i<count($array);$i++)
+		for ($i;$i<count($array);$i++){
 			$this->auxiliar[$i+1]=$array[$i];
+			
+		}
+
+		$array = $this->auxiliar;
 		
-		return $this->auxiliar;
+		return $array;
 		
 	}//Fin de la función insertElement
 	/**
@@ -105,7 +140,7 @@ class stack
 	* @param	string	$element	elemento que se va a buscar en el array para borrar
 	* @return	array	$stack		array que se va a devolver, se haya borrado el elemento o no
 	*/
-	public function removeElement($stack = false, $element = false)
+	protected function removeElement($stack = false, $element = false)
 	{
 		if (is_numeric($element))
 		{
@@ -133,7 +168,7 @@ class stack
 	* @param	string	$newElement		elemento que se intercambiar por el anterior dentro del array
 	* @return	array	$stack			array que se devuelve, que puede ser igual al que se le ha pasado
 	*/
-	public function changeElement($stack = false, $oldElement=false, $newElement=false)
+	protected function changeElement($stack = false, $oldElement=false, $newElement=false)
 	{
 		foreach ($stack as $key=>$row)
 		{
@@ -146,25 +181,33 @@ class stack
 	/**
 	 * Extrae el último elemento del array
 	 */
-	public function popElement($array = false){
+	protected function popElement($array = false){
 		return array_pop($array);	
 	}
 	
 	/**
 	 * Extrae el primer elemento del array
 	 */
-	public function pullElement($array = false){
-		return array_slice($array, 0,1);
+	protected function pullElement($array = false){
+
+		 $element = array_slice($array, 0,1);
+		unset($array[0]);
+		
+		foreach($array as $row)
+			$this->auxiliar[]=$row;
+		$array = $this->auxiliar;
+		
+		return element;
 	}
 	/**
 	* Pinta los elemento de un array
 	*
 	* Recorre los elemento de un array y los saca por pantalla. Los asigna a literal.
 	*
-	* @param	string	$stack		array cuyos elementos se van a sacar por pantalla
+	* @param	string	$stack			array cuyos elementos se van a sacar por pantalla
 	* @param	string	$literal		atributo al cual se van a asignar los elementos del array
 	*/
-	public function printerStack($stack = false, $literal = false)
+	protected function printerStack($stack = false, $literal = false)
 	{
 		$cadena="$literal=\"";
 		

@@ -1,5 +1,5 @@
 <?php
-class div implements stack{
+class div extends stack{
 	
 	private $div = array();
 	
@@ -14,12 +14,13 @@ class div implements stack{
 	/**
 	 * Inserta un elemento al principio del array DIV
 	 * 
-	 * @param unknown_type $element
+	 * El DIV es un contenedor que puede tener instancias de clases que tengan el método printer.
+	 * @param class $element	Instancia de clase que será la primera en dibujar
 	 */
 	public function task($element = false){
 		if (get_class($element)){
 			if(method_exists($element, 'printer')){
-				//Si el elemento es un objeto que implementa la clase printer, entonces ...
+				$this->div = $this->taskElement($this->div,$element);
 			}
 		}
 	}//Fin de la función task
@@ -32,7 +33,7 @@ class div implements stack{
 	public function push($element = false){
 		if (get_class($element)){
 			if(method_exists($element, 'printer')){
-				//Si el elemento es un objeto que implementa la clase printer, entonces ...
+				$this->div = $this->pushElement($this->div,$element);
 			}
 		}		
 	}//Fin de la función push
@@ -43,7 +44,9 @@ class div implements stack{
 	 * @param unknown_type $element
 	 */
 	public function pop(){
-		
+		$aux = $this->lastElement($this->div);
+		$this->popElement($this->div);
+		return $aux;
 	}//Fin de la función pop
 	
 	/**
@@ -51,7 +54,9 @@ class div implements stack{
 	 * @param unknown_type $element
 	 */
 	public function pull(){
-		
+		$aux = $this->firstElement($this->div);
+		$this->pullElement($this->div);
+		return $aux;
 	}//Fin de la función pull
 	
 	/**
@@ -98,6 +103,7 @@ class div implements stack{
 	 * Dibuja el div
 	 */
 	public function printer(){
-		
+		foreach($this->div as $class)
+			$class->printer();
 	}//Fin de la función printer
 }
